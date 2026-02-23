@@ -41,7 +41,7 @@ dependencies {
 }
 
 base {
-    archivesName.set("Hyinit")
+    archivesName.set("HytaleServer")
 }
 
 tasks {
