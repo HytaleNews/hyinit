@@ -15,7 +15,7 @@ public final class ServerJarLocator {
 
     private static final String[] ARG_KEYS = {"--server-jar", "--serverJar"};
 
-    private static final String DEFAULT_SERVER_JAR = "HytaleServer.jar";
+    private static final String DEFAULT_SERVER_JAR = "HytaleServerOriginal.jar";
 
     // Private constructor to prevent instantiation
     private ServerJarLocator() {}
