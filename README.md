@@ -4,22 +4,14 @@ Backwards compatible with [Hyxin](https://www.curseforge.com/hytale/mods/hyxin).
 
 ## User Guide
 Hyinit is NOT a standard early plugin, so do not place it in the earlyplugins folder.
-Instead, place `HytaleServer-X.X.X.jar` (the Hyinit JAR) in your server directory as `HytaleServer.jar`, and move the original `HytaleServer.jar` into the `server/` subdirectory as `HytaleServerOriginal.jar`.
-
-Your directory layout should look like this:
-```
-<server root>/
-├── HytaleServer.jar          ← Hyinit JAR (renamed)
-├── earlyplugins/
-└── server/
-    └── HytaleServerOriginal.jar  ← original Hytale server JAR
-```
+Instead, place `HytaleServer-X.X.X.jar` (the Hyinit JAR) in your server directory as `HytaleServer.jar`, and rename the original `HytaleServer.jar` to `HytaleServerOriginal.jar`.
+When launching, **make sure that both Hyinit (`HytaleServer.jar`) and the original Hytale server (`HytaleServerOriginal.jar`) are in the same directory.**
 
 For example, if you are currently using a command like this to start the server normally:
 ```shell
 java -Xms10G -Xmx10G -jar HytaleServer.jar --assets=../Assets.zip
 ````
-Move your original `HytaleServer.jar` to `server/HytaleServerOriginal.jar`, then place the Hyinit JAR as `HytaleServer.jar`. The server will now start through Hyinit automatically:
+Rename your original `HytaleServer.jar` to `HytaleServerOriginal.jar`, then place the Hyinit JAR as `HytaleServer.jar`. The server will now start through Hyinit automatically:
 ```shell
 java -Xms10G -Xmx10G -jar HytaleServer.jar --assets=../Assets.zip
 ````

@@ -29,14 +29,13 @@ public final class ServerJarLocator {
         }
 
         Path cwd = Paths.get("").toAbsolutePath().normalize();
-        Path serverDir = cwd.resolve("server");
 
-        Path defaultJar = serverDir.resolve(DEFAULT_SERVER_JAR);
+        Path defaultJar = cwd.resolve(DEFAULT_SERVER_JAR);
         if (isHytaleServer(defaultJar)) {
             return defaultJar;
         }
 
-        Optional<Path> scanned = scanJarCandidates(serverDir);
+        Optional<Path> scanned = scanJarCandidates(cwd);
         if (scanned.isPresent()) {
             return scanned.get();
         }
