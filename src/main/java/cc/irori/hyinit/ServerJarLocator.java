@@ -92,6 +92,9 @@ public final class ServerJarLocator {
     }
 
     private static Optional<Path> scanJarCandidates(Path dir) {
+        if (!Files.isDirectory(dir)) {
+            return Optional.empty();
+        }
         try (Stream<Path> s = Files.list(dir)) {
             return s.filter(Files::isRegularFile)
                     .filter(p ->
