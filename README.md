@@ -10,7 +10,7 @@ Your directory layout should look like this:
 ```
 <server root>/
 ├── earlyplugins/
-└── server/
+└── server/          ← also accepted as Server/ (capital S)
     ├── HytaleServer.jar          ← Hyinit JAR (renamed)
     └── HytaleServerOriginal.jar  ← original Hytale server JAR
 ```
@@ -19,7 +19,7 @@ For example, if you are currently using a command like this to start the server 
 ```shell
 java -Xms10G -Xmx10G -jar HytaleServer.jar --assets=../Assets.zip
 ````
-Move your original `HytaleServer.jar` to `server/HytaleServerOriginal.jar`, then place the Hyinit JAR as `server/HytaleServer.jar`. The server will now start through Hyinit automatically:
+Move your original `HytaleServer.jar` to `server/HytaleServerOriginal.jar` (or `Server/HytaleServerOriginal.jar`), then place the Hyinit JAR as `server/HytaleServer.jar` (or `Server/HytaleServer.jar`). The server will now start through Hyinit automatically:
 ```shell
 java -Xms10G -Xmx10G -jar server/HytaleServer.jar --assets=../Assets.zip
 ````

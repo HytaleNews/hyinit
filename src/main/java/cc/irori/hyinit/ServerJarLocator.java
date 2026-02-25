@@ -29,16 +29,19 @@ public final class ServerJarLocator {
         }
 
         Path cwd = Paths.get("").toAbsolutePath().normalize();
-        Path serverDir = cwd.resolve("server");
 
-        Path defaultJar = serverDir.resolve(DEFAULT_SERVER_JAR);
-        if (isHytaleServer(defaultJar)) {
-            return defaultJar;
-        }
+        for (String candidate : new String[] {"server", "Server"}) {
+            Path serverDir = cwd.resolve(candidate);
 
-        Optional<Path> scanned = scanJarCandidates(serverDir);
-        if (scanned.isPresent()) {
-            return scanned.get();
+            Path defaultJar = serverDir.resolve(DEFAULT_SERVER_JAR);
+            if (isHytaleServer(defaultJar)) {
+                return defaultJar;
+            }
+
+            Optional<Path> scanned = scanJarCandidates(serverDir);
+            if (scanned.isPresent()) {
+                return scanned.get();
+            }
         }
 
         throw new IllegalArgumentException("Could not locate HytaleServer. Specify the path using --server-jar");
