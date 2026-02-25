@@ -1,8 +1,5 @@
 package cc.irori.hyinit.mixin.impl;
 
-import cc.irori.hyinit.shared.SourceMetaStore;
-import cc.irori.hyinit.shared.SourceMetadata;
-import cc.irori.hyinit.util.LoaderUtil;
 import cc.irori.hyinit.util.UrlUtil;
 import com.hypixel.hytale.server.core.plugin.PluginManager;
 import java.io.IOException;
@@ -25,7 +22,7 @@ public abstract class MixinPluginManager {
                             value = "INVOKE",
                             target = "Ljava/lang/ClassLoader;getResources(Ljava/lang/String;)Ljava/util/Enumeration;"))
     private Enumeration<URL> hyinit$redirectManifestResources(ClassLoader instance, String name) throws IOException {
-        // allow server and other classpath plugins through
+        // allow server and other classpath plugins (including early plugins) through, but exclude hyinit itself
         Path hyinitJarPath = UrlUtil.asPath(
                 cc.irori.hyinit.Main.class.getProtectionDomain().getCodeSource().getLocation());
 
@@ -38,11 +35,6 @@ public abstract class MixinPluginManager {
                 Path jarPath = UrlUtil.asPath(jarConnection.getJarFileURL());
 
                 if (jarPath.equals(hyinitJarPath)) {
-                    continue;
-                }
-
-                SourceMetadata meta = SourceMetaStore.get(LoaderUtil.normalizeExistingPath(jarPath));
-                if (meta != null && meta.isEarlyPlugin()) {
                     continue;
                 }
             }
